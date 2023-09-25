@@ -5,8 +5,8 @@ import csv
 # files to retrieve and output
 ELECTION_PATH = os.path.join("Resources", "election_data.csv")
 OUTPUT_PATH = os.path.join("Analysis","election_data.csv")
-CANDIDATE_COL = 2
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+CANDIDATE_COL = 2
 
 # initialize the voter parameters
 total_votes_cast = 0
@@ -48,12 +48,10 @@ f" Election Results \n"
 "---------------------------------  \n"
 f" Total Votes: {total_votes_cast} \n"
 f"---------------------------------  \n"
-#f"  \n"
+f"  \n"
 f" {candidate_votes} \n"
 f"  \n"
-f"---------------------------------  \n"
 f"{candidate}:  {candidate_percent:.3f}%  ({votes}) \n"
-"---------------------------------  \n"
 " \n"
 "---------------------------------  \n"
 f" Winner: {winning_candidate} \n"
