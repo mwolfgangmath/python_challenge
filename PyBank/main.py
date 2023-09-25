@@ -5,6 +5,10 @@ import csv
 # files to retrieve and push back out
 BUDGET_PATH = os.path.join("Resources", "budget_data.csv")
 OUTPUT_PATH = os.path.join("Analysis","bank_output.txt")
+# constants: assign and label reference columns
+DATE_COL = 0
+PROFIT_COL = 1
+
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 # lists to store financial parameters
@@ -27,7 +31,7 @@ with open(BUDGET_PATH, 'r') as csvfile:
         header = next(reader)
         for row in reader:
             # Add up all the profit/loss from the second column
-            current_month_value= int(row[1])
+            current_month_value= int(row[PROFIT_COL])
             total_net += current_month_value
             total_months +=1
             # keep track of two consecuative months in order to calculate the change
@@ -37,10 +41,10 @@ with open(BUDGET_PATH, 'r') as csvfile:
                 total_change += change
                 # compare each change to search for the extremes and store the date
                 if change > greatest_increase:
-                    greatest_increase_date = row[0]
+                    greatest_increase_date = row[DATE_COL]
                     greatest_increase = change
                 elif change < greatest_decrease:
-                    greatest_decrease_date = row [0]
+                    greatest_decrease_date = row [DATE_COL]
                     greatest_decrease = change
             # prepare for next month row
             previous_month_value = current_month_value
